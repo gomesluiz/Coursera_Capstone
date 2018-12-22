@@ -1,2 +1,2 @@
-# Coursera_Capstone
-IBM Coursera Machine Learning Capstone Repository
+# Coursera Capstone
+IBM Coursera Machine Learning Capstone Project Repository
