@@ -1,1 +1,5 @@
 # Introduction
+
+Missed or rejected pets have become a severe problem in many cities. Owners of missed pets usually take a long time to find them or even they may never find their pets because, for example, these pets might be moved far from where they used to live. On the other hand,  ONG's have high difficulty to rescue rejected pets, so these ONGs are not often alerted about them or when are these pets have already moved to another place. 
+
+The mobile phones have already become part of the day-to-day of people lives. These people might provide the geographic location and a photo of these missed or rejected pets. In its turn, owners and ONGs could search and visualize the geographic location of missed or rejected pets including points of references such as coffees and restaurants. Governmental agencies could visualize and compare areas of the city with the highest incidence of missed ou rejected and could segment areas to uncover patterns which could guide marketing campaigns to mitigate the problem.
