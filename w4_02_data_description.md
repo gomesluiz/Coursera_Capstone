@@ -1,1 +1,3 @@
 # Data Description
+
+In addition to the information provided by people through the mobile application (timestamp, longitude, latitude, photos of pet), geographic data (provided by Foursquare) will be used to create a city map including the location and reference points where the pets were supposedly located. To prototype the ideas of this capstone project, the Toronto neighbors dataset will be employed.
