@@ -16,13 +16,13 @@ The mobile phones have already become part of the day-to-day of people's lives, 
 
 This prototype will make use of the following data sources:
 
-####Animal Services of The City of Toronto####
+#### Animal Services of The City of Toronto
 
 **The Stray Animals Report**
 
 The Stray Animals Report provide by The Animal Services of The City Toronto displays stray animals  (cats and dogs) received in the last 5 days. The report data will be scraped from https://www.toronto.ca/data/mls/animals/strayanimals.html, and contains the following information:
 
-* **Specie**
+* **Category**
 * **Date**  
 * **Breed** 
 * **Approximate Age** 
