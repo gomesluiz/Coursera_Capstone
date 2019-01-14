@@ -63,6 +63,7 @@ The shelters informartion will be to plot theirs geographical localisation in th
 This data source contains the information about stray animals received in the last 5 days by The Animal Services of the City of Toronto. 
 
 **1. Data Cleaning** 
+
 The report is available in two HTML tables (cats and dogs). These table contains some inconsistent entries and needs some cleanup.
 
 The following activities were performed:
@@ -71,11 +72,10 @@ The following activities were performed:
 * Fix cells with crossing intersections wrong format.
 * Separate crossing intersections fields in street 1 and street 2.
 
-**Localisation of crossing intersections** 
+**Localisation of crossing intersections:** 
 The Geocoder Service (https://geocoder.api.here.com) was used to find latitude and longitude of crossing intersections. These geographical coordinates will be used to search FourSquare API location data.
 
 **The Python code used to retrieve geographical coordinates from geocoder services.**
-
 ```python 
 def get_coordinates(city, street1, street2=''):
     
@@ -102,7 +102,7 @@ def get_coordinates(city, street1, street2=''):
 ```
 
 **Post processed sample lost pets table merged with crossing intersections geographical coordinates.**
-![Lost and Founds Pets in Toronto](lost_and_found_pets_w_coordinates.png)
+![Lost pets in Toronto](lost_and_found_pets_w_coordinates.png)
 
 
 ### 4.2 Receiving Shelters Data
