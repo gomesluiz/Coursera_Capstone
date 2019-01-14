@@ -102,7 +102,7 @@ def get_coordinates(city, street1, street2=''):
 ```
 
 **Post processed sample lost pets table merged with crossing intersections geographical coordinates.**
-![Lost pets in Toronto](lost_and_found_pets_w_coordinates.png)
+![Lost pets in Toronto](https://github.com/gomesluiz/Coursera_Capstone/lost_and_found_pets_w_coordinates.png)
 
 
 ### 4.2 Aninal Shelters Location
