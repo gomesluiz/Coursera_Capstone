@@ -152,12 +152,14 @@ This report shows the results of analysis of the segmentation of the nearest cro
 
 Using Fourshare, we have collected data of venues around each crossing intersection. The project report indicates the nine most common venues ana five clusters using k-means algorithms are yielded based on venues information.
 
-The generated clusters from our results shows that most avenues around crossing intersection are related to restaurantes or cafes. Maybe, these results suggests that lost pets tend to look for food in these places. Also, such results may suggest that owners are could be distracting during their lunch in these places, allowing their pets to run away and get lost. This king of results may be very interesting for the Animals Services of City of Toronto which elaborate specific campaings to mitigate the problem.
+The generated clusters from our results shows that most avenues around crossing intersection are related to restaurantes or cafes. Maybe, these results suggests that lost pets tend to look for food in these places. Also, such results may suggest that owners are could be distracting during their lunch in these places, allowing their pets to run away and get lost. This king of results may be very interesting for the Animals Services of City of Toronto which elaborate specific campaings to mitigate the problem. Of course, more data and more analysis are required to confirm these results.
 
 ## Acknowledgements
 
 I would like to thank the Coursera and the IBM companies for the excellent course and my peers for the valuable evaluations of the my activities.
 
 The best regards,
+
 Luiz Alberto Ferreira Gomes
+
 LinkedIn: https://www.linkedin.com/in/luizafgomes/
