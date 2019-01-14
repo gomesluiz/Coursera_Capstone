@@ -51,7 +51,8 @@ The FourSquare API will be used to explore neighborhoods in **Crossing Intersect
 ### Lost and Found Pets
 The data source contains the information about stray animals received in the last 5 days by The Animal Services of the City of Toronto. 
 
-**Data Cleaning** The report is available in two HTML tables (cats and dogs). These table contains some inconsistent entries and needs some cleanup.
+**1. Data Cleaning** 
+The report is available in two HTML tables (cats and dogs). These table contains some inconsistent entries and needs some cleanup.
 
 The following activities were performed:
 
@@ -62,7 +63,37 @@ The following activities were performed:
 Post processed sample Lost and Found pets table.
 ![Lost and Founds Pets in Toronto](lost_and_found_pets.png)
 
-**Localisation of crossing intersections** The Geocoder Service (https://geocoder.api.here.com) was used to find latitude and longitude of crossing intersections. These geographical coordinates will be used to search for venues using FourSquare API.
+**2. Localisation of crossing intersections** 
+The Geocoder Service (https://geocoder.api.here.com) was used to find latitude and longitude of crossing intersections. These geographical coordinates will be used to search FourSquare API location data.
+The Python code used to 
+
+```python 
+def get_cross_intersec_localization(pets):
+    url = 'https://geocoder.api.here.com/6.2/geocode.json?city={}&street={}@{}&app_id={}&app_code={}&gen=9'
+    api_id   = '79foQR1GPJRvsWDGB0Ul'
+    api_code = 'E5YKLSl_O29hf-ipUlPFfQ'
+   
+    for row in pets.itertuples():
+        address = url.format('Toronto'
+                         , row.cross_intersec_st1
+                         , row.cross_intersec_st2
+                         , '79foQR1GPJRvsWDGB0Ul'
+                         , 'E5YKLSl_O29hf-ipUlPFfQ')
+        response = requests.get(address).json()
+        try:
+            
+            localization = json_normalize(response['Response']['View'][0]['Result'][0]['Location'])
+            pets.loc[row.Index,'cross_intersec_latitude']   = localization.loc[0, 'DisplayPosition.Latitude']
+            pets.loc[row.Index,'cross_intersec_longitude']  = localization.loc[0, 'DisplayPosition.Longitude']
+        except Exception as e:
+            print('Crossing intersection {}/{} was not found in geocode database: {}! '.format(
+                  row.cross_intersec_st1
+                , row.cross_intersec_st2
+                , str(e)))
+        
+    return(pets)
+
+```
 
 Post processed sample Lost and Found pets table with geographical coordinates.
 ![Lost and Founds Pets in Toronto](lost_and_found_pets_w_coordinates.png)
