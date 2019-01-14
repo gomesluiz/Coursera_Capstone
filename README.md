@@ -110,10 +110,15 @@ The following piece of map was plotted using the crossing intersection and shelt
 
 The above piece of map shows the close crossing intersections from where lost dogs (blue circles) and cats (red circles) were found. Furthermore, green circles represent the groups of pets encountered in the same near crossing intersections (the inner digit is a number of pets).  The light blue marker depicts a shelter.
 
-**2. Clustering and Segmentation by Venue**
+**2. Clustering and Segmentation**
+
 Using the Foursquare API, the explore API function was to be used to get the most common venue categories in each crossing intersection and then used this feature to group the crossing intersections into clusters. The k-means clustering algorithm was used for the analysis. Finally, the Folium library is used to visualize the emerging clusters.
 
+**2.1 The most common venues for each crossing intersection** 
 ![Crossing Intersections Venues Category in Toronto](crossing_intersections_venue_category.png)
+
+**2.2 The k-Means clusters yielded**
+![Crossing Intersections Venues Category and Clusters in Toronto](crossing_intersections_venue_category_and_cluster.png )
 
 
 ![Lost and Founds Pets Segmentation Map in Toronto](lost_and_found_pets_segmentation_map.png)
