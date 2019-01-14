@@ -117,7 +117,7 @@ The report is available in a HTML table. These table contains needs some cleanup
 * Get shelters coordinates from Geocoder Services.
 
 **Post processed sample shelters table with geographical coordinates.**
-![Receiving Shelters in Toronto](animals_shelters.png)
+![Receiving Shelters in Toronto](animals_shelters.png = 100x100)
 
 
 
