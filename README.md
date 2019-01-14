@@ -105,17 +105,20 @@ def get_coordinates(city, street1, street2=''):
 ![Lost pets in Toronto](lost_and_found_pets_w_coordinates.png)
 
 
-### 4.2 Receiving Shelters Data
+### 4.2 Aninal Shelters Location
 
 This data source contains the information about receiving shelters of City of Toronto. 
 
 **1. Data Cleaning** 
+
 The report is available in a HTML table. These table contains needs some cleanup and the following activities were performed:
 
 * Split up description field in street, city, province and country
+* Get shelters coordinates from Geocoder Services.
 
-**Post processed sample shelters table.**
-![Receiving Shelters in Toronto](lost_and_found_pets.png)
+**Post processed sample shelters table with geographical coordinates.**
+![Receiving Shelters in Toronto](animals_shelters.png)
+
 
 
 
