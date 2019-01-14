@@ -100,19 +100,18 @@ def get_cross_intersec_localization(pets):
 ![Lost and Founds Pets in Toronto](lost_and_found_pets_w_coordinates.png)
 
 
-## 5. SEGMENTATION AND CLUSTERING
+## 5. RESULTS
 
 **1. Lost and Found pets, and Shelters Geographical Localisation**
 
-The following map was plotted using the crossing intersection and shelters geographical coordinates.
+The following piece of map was plotted using the crossing intersection and shelters geographical coordinates.
 
 ![Lost and Founds Pets Localisation Map in Toronto](lost_and_found_pets_localisation_map.png)
 
-In the above map, blue circles represent dogs and red circles represent cats. Green circles represent the pets groups in the same coordinates (the inner digit is a number of pets).  The marker depicts a shelter.
+The above piece of map shows the close crossing intersections from where lost dogs (blue circles) and cats (red circles) were found. Furthermore, creen circles represent groups of pets encountered in the same near crossing intersections (the inner digit is a number of pets).  The light blue marker depicts a shelter.
 
-**2. Retrieving FourSquare Venues Data**
+**2. Clustering and Segmentation by Venue**
 Using the Foursquare API, the explore API function was be used to get the most common venue categories in each crossing intersection, and then used this feature to group the crossing intersections into clusters. The k-means clustering algorithm was used for the analysis. Finally, the Folium library is used to visualize the emerging clusters.
-
 
 ![Lost and Founds Pets Segmentation Map in Toronto](lost_and_found_pets_segmentation_map.png)
 
