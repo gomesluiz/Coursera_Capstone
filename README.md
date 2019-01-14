@@ -120,7 +120,7 @@ Using the Foursquare API, the explore API function was to be used to get the mos
 **2.2 The k-Means clusters yielded**
 ![Crossing Intersections Venues Category and Clusters in Toronto](crossing_intersections_venue_category_and_cluster.png )
 
-
+**2.2 Lost and found pets segmentation map** 
 ![Lost and Founds Pets Segmentation Map in Toronto](lost_and_found_pets_segmentation_map.png)
 
 
