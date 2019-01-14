@@ -102,4 +102,8 @@ def get_cross_intersec_localization(pets):
 
 ## 5. SEGMENTATION AND CLUSTERING
 
+**Post processed sample Lost and Found pets table merged with geographical coordinates.**
+![Lost and Founds Pets in Toronto](lost_and_found_pets_localisation_map.png)
+
+
 ## 6. DISCUSSION AND CONCLUSION
