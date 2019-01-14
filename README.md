@@ -4,17 +4,19 @@
 
 ### 1. PURPOSE
 ***
-This report provides the details about my IBM Applied Data Science Capstone Project for peer reviewing assessment. The complete results and the Python code can be viewed from  
+This report provides the details about my IBM Applied Data Science Capstone Project for peer reviewing assessment. The complete results and the Python code can be viewed from https://github.com/gomesluiz/Coursera_Capstone/blob/master/w5_source_code.ipynb.
+
 ### 2. INTRODUCTION
 ***
-Missed pets have become a severe problem in many cities. Pets owners usually take a long time to find them or even they may never find their pets because, for example, these pets might be moved far from where they used to live. On the other hand,  ONG's have high difficulty to rescue rejected pets, so these ONGs are not often alerted about them or when are these pets have already moved to another place. 
+Lost pets have become a severe problem in many cities. Pets owners usually take a long time to find them or even they may never find their pets because, for example, these pets might be moved far from where they used to live. On the other hand, ONGs have high difficulty to rescue rejected pets, so these ONGs are not often alerted about them or when are these pets have already moved to another place.  Discovering and understanding unusual patterns about these lost pets (e.g. local characteristics where they were encountered) from data provided by many public agencies or ONG's could guide them in actions or help them to promote campaigns to mitigate the problem. 
 
-The mobile phones have already become part of the day-to-day of people's lives, who might provide using their mobile phones the geographic location and a photo of these missed or rejected pets. In its turn, pets owners and ONGs could search and visualize the geographic location of missed or rejected pets including points of references such as cafes and restaurants. Furthermore, governmental agencies could visualize and compare areas of the city with the highest incidence of missed ou rejected and could segment areas to uncover patterns which could guide marketing campaigns to mitigate the problem.
+For demonstration, I have used the data provided by Animal Services of City of Toronto (https://www.toronto.ca/data/mls/animals/strayanimals.html). I prefer to use the nearest crossing intersection where a pet was encountered as the basic geographical localization to retrieve FourSquare data for clustering and segmentation. Unfortunately, this report displays only stray animals received in the last 5 days.
+
 
 ### 3. DATA DESCRIPTION AND ACQUISITION 
 ***
 
-This prototype will make use of the following data sources:
+This demonstration will make use of the following data sources:
 
 #### Animal Services of The City of Toronto
 
@@ -35,14 +37,20 @@ The **Stray Animals Report** provide by The Animal Services of The City of Toron
  
 * **Title**
 * **Address**  
- 
-**Toronto Venues nearby Crossing Intersections from FourSquare API (FourSquare website: www.foursquare.com)**
 
-The FourSquare API will be used to explore neighborhoods in **Crossing Intersections** and **Receiving Shelters Localisation** in Toronto. The Foursquare explore function will be used to get the most common venue categories in each neighborhood, and then use this feature to group the neighborhoods into clusters. The following information are retrieved on the first query:
+#### Geocoder of Crossing Intersection Coordinates.
+
+**The Coordinates of Crossing Intersections** The Geocoder (https://geocoder.api.here.com) will be used to get the geographical coordinates. The following information are retrieved on the query:
+
+* **Latitude and Longitude**
+
+#### Foursquare Venues Data
+
+**The Nearest Venues of Crossing Intersections** The FourSquare (www.foursquare.com) API will be used to explore venues in Toronto nearby **Crossing Intersections**. The Foursquare explore function will be used to get the most common venue categories in each crossing intersection, and then use this feature to group the crossing intersections into clusters. The following information are retrieved on the query:
 
 * **Venue ID**
 * **Venue Name**
-* **Coordinates:** Latitude and Longitude
+* **Latitude and Longitude**
 * **Category Name**
 
 
