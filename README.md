@@ -8,7 +8,7 @@ This report provides the details about my IBM Applied Data Science Capstone Proj
 
 ### 2. INTRODUCTION
 ***
-Lost pets have become a severe problem in many cities. Pets owners usually take a long time to find them or even they may never find their pets because, for example, these pets might be moved far from where they used to live. On the other hand, ONGs have high difficulty to rescue rejected pets, so these ONGs are not often alerted about them or when are these pets have already moved to another place.  Discovering and understanding unusual patterns about these lost pets (e.g. local characteristics where they were encountered) from data provided by many public agencies or ONG's could guide them in actions or help them to promote campaigns to mitigate the problem. 
+Lost pets have become a severe problem in many cities. Pets owners usually take a long time to find them or even they may never find their pets because, for example, these pets might be moved far from where they used to live. On the other hand, ONGs have high difficulty to rescue lost pets, so these ONGs are not often alerted about them or when are these pets have already moved to another place.  Discovering and understanding unusual patterns about these lost pets (e.g. local characteristics) from data provided by many public agencies or ONG's could guide them in actions or help them to promote campaigns to mitigate the problem. 
 
 For demonstration, I have used the data provided by Animal Services of City of Toronto (https://www.toronto.ca/data/mls/animals/strayanimals.html). I prefer to use the nearest crossing intersection where a pet was encountered as the basic geographical localization to retrieve FourSquare data for clustering and segmentation. Unfortunately, this report displays only stray animals received in the last 5 days.
 
@@ -16,9 +16,9 @@ For demonstration, I have used the data provided by Animal Services of City of T
 ### 3. DATA DESCRIPTION AND ACQUISITION 
 ***
 
-This demonstration will make use of the following data sources:
+For this demonstration will make use of the following data sources:
 
-#### Animal Services of The City of Toronto
+#### 3.1 Animal Services of The City of Toronto
 
 The **Stray Animals Report** provide by The Animal Services of The City of Toronto displays stray animals  (cats and dogs) received in the last 5 days. The report data will be scraped from https://www.toronto.ca/data/mls/animals/strayanimals.html and contains the following information:
 
@@ -38,13 +38,15 @@ The **Stray Animals Report** provide by The Animal Services of The City of Toron
 * **Title**
 * **Address**  
 
-#### Geocoder of Crossing Intersection Coordinates.
+The shelters informartion will be to plot theirs geographical localisation in the Folium map.
+
+#### 3.2 Geocoder of Crossing Intersection Coordinates.
 
 **The Coordinates of Crossing Intersections** The Geocoder (https://geocoder.api.here.com) will be used to get the geographical coordinates. The following information are retrieved on the query:
 
 * **Latitude and Longitude**
 
-#### Foursquare Venues Data
+#### 3.3 Foursquare Venues Data
 
 **The Nearest Venues of Crossing Intersections** The FourSquare (www.foursquare.com) API will be used to explore venues in Toronto nearby **Crossing Intersections**. The Foursquare explore function will be used to get the most common venue categories in each crossing intersection, and then use this feature to group the crossing intersections into clusters. The following information are retrieved on the query:
 
@@ -56,8 +58,9 @@ The **Stray Animals Report** provide by The Animal Services of The City of Toron
 
 ## 4. METODOLOGY
 
-### Lost and Found Pets
-The data source contains the information about stray animals received in the last 5 days by The Animal Services of the City of Toronto. 
+### 4.1 Lost and Found Pets Report
+
+This data source contains the information about stray animals received in the last 5 days by The Animal Services of the City of Toronto. 
 
 **1. Data Cleaning** 
 The report is available in two HTML tables (cats and dogs). These table contains some inconsistent entries and needs some cleanup.
@@ -77,35 +80,85 @@ The Geocoder Service (https://geocoder.api.here.com) was used to find latitude a
 **The Python code used to retrieve geographical coordinates for crossing intersections.**
 
 ```python 
-def get_cross_intersec_localization(pets):
-    url = 'https://geocoder.api.here.com/6.2/geocode.json?city={}&street={}@{}&app_id={}&app_code={}&gen=9'
+def get_coordinates(city, street1, street2=''):
+    
     api_id   = '79foQR1GPJRvsWDGB0Ul'
     api_code = 'E5YKLSl_O29hf-ipUlPFfQ'
-   
-    for row in pets.itertuples():
-        address = url.format('Toronto'
-                         , row.cross_intersec_st1
-                         , row.cross_intersec_st2
-                         , '79foQR1GPJRvsWDGB0Ul'
-                         , 'E5YKLSl_O29hf-ipUlPFfQ')
-        response = requests.get(address).json()
-        try:
-            
-            localization = json_normalize(response['Response']['View'][0]['Result'][0]['Location'])
-            pets.loc[row.Index,'cross_intersec_latitude']   = localization.loc[0, 'DisplayPosition.Latitude']
-            pets.loc[row.Index,'cross_intersec_longitude']  = localization.loc[0, 'DisplayPosition.Longitude']
-        except Exception as e:
-            print('Crossing intersection {}/{} was not found in geocode database: {}! '.format(
-                  row.cross_intersec_st1
-                , row.cross_intersec_st2
-                , str(e)))
+    latitude = longitude = 0.0
+    
+    if (street2 == ''):
+        url = 'https://geocoder.api.here.com/6.2/geocode.json?city={}&street={}&app_id={}&app_code={}&gen=9'
+        address  = url.format(city, street1, api_id, api_code)
+    else:
+        url = 'https://geocoder.api.here.com/6.2/geocode.json?city={}&street={}@{}&app_id={}&app_code={}&gen=9'
+        address  = url.format(city, street1, street2, api_id, api_code)
         
-    return(pets)
+    try:
+        response = requests.get(address).json()
+        localization = json_normalize(response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition'])
+        latitude  = localization.loc[0, 'Latitude']
+        longitude = localization.loc[0, 'Longitude']
+    except Exception as e:
+        print('Adress {}/{} was not found in geocoder database: {}! '.format(street1, city, str(e)))
+        
+    return((latitude, longitude))
 
+def get_lost_pets(city, url):
+    pets = []
+    categories = ['Cat', 'Dog']
+    
+    response = requests.get(url)
+    soup     = BeautifulSoup(response.text, 'lxml')
+    tables   = soup.find_all('table')
+    
+    for index, table in enumerate(tables):
+        rows = table.find_all('tr')
+        for row in rows:
+            cols = row.find_all('td')
+            if len(cols) == 8:
+                # cleaning crossing intersections data.
+                cross_intersecs = cols[7].text.strip()
+                cross_intersecs = cross_intersecs.replace(' AND ', '/')
+                
+                # if crossing intersections was not informed, the lost pet data
+                # will be exclude from dataset.
+                if cross_intersecs != '':
+                    streets = cross_intersecs.split('/')
+                    if (len(streets) < 2):
+                        streets = cross_intersecs.split(' ')
+                    
+                    latitude, longitude = get_coordinates(city, streets[0], streets[1])
+                    pets.append((cols[0].text.strip(), cols[1].text.strip(), cols[2].text.strip()
+                                      , cols[3].text.strip(), cols[4].text.strip(), cols[5].text.strip()
+                                      , cols[6].text.strip(), cross_intersecs, latitude
+                                      , longitude, categories[index]))
+        
+    pets = pd.DataFrame(pets)
+    pets.columns = ['date', 'breed', 'age'
+                   , 'sex', 'colour', 'receiving_shelter'
+                   , 'id', 'crossing_intersections', 'cross_intersec_latitude' 
+                   , 'cross_intersec_longitude', 'category']
+    
+    return (pets)
 ```
 
 **Post processed sample Lost and Found pets table merged with geographical coordinates.**
 ![Lost and Founds Pets in Toronto](lost_and_found_pets_w_coordinates.png)
+
+
+### 4.2 Receiving Shelters Data
+
+This data source contains the information about receiving shelters of City of Toronto. 
+
+**1. Data Cleaning** 
+The report is available in a HTML table. These table contains needs some cleanup and the following activities were performed:
+
+* Split up description field in street, city, province and country
+
+**Post processed sample shelters table.**
+![Receiving Shelters in Toronto](lost_and_found_pets.png)
+
+
 
 
 ## 5. RESULTS
