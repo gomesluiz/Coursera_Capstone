@@ -71,13 +71,10 @@ The following activities were performed:
 * Fix cells with crossing intersections wrong format.
 * Separate crossing intersections fields in street 1 and street 2.
 
-**Post processed sample Lost and Found pets table.**
-![Lost and Founds Pets in Toronto](lost_and_found_pets.png)
-
-**2. Localisation of crossing intersections** 
+**Localisation of crossing intersections** 
 The Geocoder Service (https://geocoder.api.here.com) was used to find latitude and longitude of crossing intersections. These geographical coordinates will be used to search FourSquare API location data.
 
-**The Python code used to retrieve geographical coordinates for crossing intersections.**
+**The Python code used to retrieve geographical coordinates from geocoder services.**
 
 ```python 
 def get_coordinates(city, street1, street2=''):
@@ -104,7 +101,7 @@ def get_coordinates(city, street1, street2=''):
     return((latitude, longitude))
 ```
 
-**Post processed sample Lost and Found pets table merged with geographical coordinates.**
+**Post processed sample lost pets table merged with crossing intersections geographical coordinates.**
 ![Lost and Founds Pets in Toronto](lost_and_found_pets_w_coordinates.png)
 
 
