@@ -102,44 +102,6 @@ def get_coordinates(city, street1, street2=''):
         print('Adress {}/{} was not found in geocoder database: {}! '.format(street1, city, str(e)))
         
     return((latitude, longitude))
-
-def get_lost_pets(city, url):
-    pets = []
-    categories = ['Cat', 'Dog']
-    
-    response = requests.get(url)
-    soup     = BeautifulSoup(response.text, 'lxml')
-    tables   = soup.find_all('table')
-    
-    for index, table in enumerate(tables):
-        rows = table.find_all('tr')
-        for row in rows:
-            cols = row.find_all('td')
-            if len(cols) == 8:
-                # cleaning crossing intersections data.
-                cross_intersecs = cols[7].text.strip()
-                cross_intersecs = cross_intersecs.replace(' AND ', '/')
-                
-                # if crossing intersections was not informed, the lost pet data
-                # will be exclude from dataset.
-                if cross_intersecs != '':
-                    streets = cross_intersecs.split('/')
-                    if (len(streets) < 2):
-                        streets = cross_intersecs.split(' ')
-                    
-                    latitude, longitude = get_coordinates(city, streets[0], streets[1])
-                    pets.append((cols[0].text.strip(), cols[1].text.strip(), cols[2].text.strip()
-                                      , cols[3].text.strip(), cols[4].text.strip(), cols[5].text.strip()
-                                      , cols[6].text.strip(), cross_intersecs, latitude
-                                      , longitude, categories[index]))
-        
-    pets = pd.DataFrame(pets)
-    pets.columns = ['date', 'breed', 'age'
-                   , 'sex', 'colour', 'receiving_shelter'
-                   , 'id', 'crossing_intersections', 'cross_intersec_latitude' 
-                   , 'cross_intersec_longitude', 'category']
-    
-    return (pets)
 ```
 
 **Post processed sample Lost and Found pets table merged with geographical coordinates.**
