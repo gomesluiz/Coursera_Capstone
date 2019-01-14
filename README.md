@@ -148,11 +148,11 @@ Finally, the Folium library is used to visualize the emerging clusters.
 
 ## 6. DISCUSSION AND CONCLUSION
 
-This report shows the results of analysis of the segmentation of the nearest crossing intersection where lost cat and dogs were encountered. The segmentatios was maid based on data provided para Animal Services of City of Toronto. The geographical coordinates for each crossing intersection and for each receiving shelters were obtained from Geocoder Services.
+This report shows the results of analysis of the segmentation of the nearest crossing intersection where lost cat and dogs were encountered. The segmentation was maid based on data provided para Animal Services of the City of Toronto. The geographical coordinates for each crossing intersection and for each receiving shelters were obtained from Geocoder Services.
 
-Using Fourshare, we have collected data of venues around each crossing intersection. The project report indicates the nine most common venues ana five clusters using k-means algorithms are yielded based on venues information.
+Using Fourshare, we have collected data of venues around each crossing intersection. The project report indicates the nine most common venues and five clusters using k-means algorithms are yielded based on venues information.
 
-The generated clusters from our results shows that most avenues around crossing intersection are related to restaurantes or cafes. Maybe, these results suggests that lost pets tend to look for food in these places. Also, such results may suggest that owners are could be distracting during their lunch in these places, allowing their pets to run away and get lost. This king of results may be very interesting for the Animals Services of City of Toronto which elaborate specific campaings to mitigate the problem. Of course, more data and more analysis are required to confirm these results.
+The generated clusters from our results show that most avenues around crossing intersection are related to restaurants or cafes. Maybe, these results suggest that lost pets tend to look for food in these places. Also, such results may suggest that owners are could be distracting during their lunch in these places, allowing their pets to run away and get lost. This kind of results may be very interesting for the Animals Services of the City of Toronto which elaborate specific campaigns to mitigate the problem. Of course, more data and more analysis are required to confirm these results.
 
 ## Acknowledgements
 
