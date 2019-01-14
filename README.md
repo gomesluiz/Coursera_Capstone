@@ -49,18 +49,24 @@ The FourSquare API will be used to explore neighborhoods in **Crossing Intersect
 ## 4. METODOLOGY
 
 ### Lost and Found Pets
-The data source contains the information about stray animals received in the last 5 days by The Animal Services of City of Toronto. 
+The data source contains the information about stray animals received in the last 5 days by The Animal Services of the City of Toronto. 
 
-**Data Cleaning** The report is available in a two HTML tables (cats and dogs). These table contains some inconsistent entries and needs some cleanup.
+**Data Cleaning** The report is available in two HTML tables (cats and dogs). These table contains some inconsistent entries and needs some cleanup.
 
 The following activities were performed:
 
 * Drop/ignore cells with missing crossing intersections data
 * Fix cells with crossing intersections wrong format.
+* Separate crossing intersections fields in street 1 and street 2.
 
+Post processed sample Lost and Found pets table.
 ![Lost and Founds Pets in Toronto](lost_and_found_pets.png)
 
- 
+**Localisation of crossing intersections** The Geocoder Service (https://geocoder.api.here.com) was used to find latitude and longitude of crossing intersections. These geographical coordinates will be used to search for venues using FourSquare API.
+
+Post processed sample Lost and Found pets table with geographical coordinates.
+![Lost and Founds Pets in Toronto](lost_and_found_pets.png)
+
 
 ## 5. SEGMENTATION AND CLUSTERING
 
