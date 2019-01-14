@@ -1,10 +1,10 @@
-# CAPSTONE PROJECT: FINAL REPORT
+# IBM Applied Data Science Capstone Project
 
-## LOST AND FOUND PETS STATISTICS AND SEGMENTATION
+## LOST PETS OF TORONTO SEGMENTATION REPORT
 
 ### 1. PURPOSE
 ***
-
+This report provides the details about my IBM Applied Data Science Capstone Project for peer reviewing assessment. The complete results and the Python code can be viewed from  
 ### 2. INTRODUCTION
 ***
 Missed pets have become a severe problem in many cities. Pets owners usually take a long time to find them or even they may never find their pets because, for example, these pets might be moved far from where they used to live. On the other hand,  ONG's have high difficulty to rescue rejected pets, so these ONGs are not often alerted about them or when are these pets have already moved to another place. 
