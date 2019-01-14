@@ -65,7 +65,7 @@ Post processed sample Lost and Found pets table.
 **Localisation of crossing intersections** The Geocoder Service (https://geocoder.api.here.com) was used to find latitude and longitude of crossing intersections. These geographical coordinates will be used to search for venues using FourSquare API.
 
 Post processed sample Lost and Found pets table with geographical coordinates.
-![Lost and Founds Pets in Toronto](lost_and_found_pets.png)
+![Lost and Founds Pets in Toronto](lost_and_found_pets_w_coordinates.png)
 
 
 ## 5. SEGMENTATION AND CLUSTERING
