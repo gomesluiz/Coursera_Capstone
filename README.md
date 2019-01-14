@@ -65,7 +65,8 @@ Post processed sample Lost and Found pets table.
 
 **2. Localisation of crossing intersections** 
 The Geocoder Service (https://geocoder.api.here.com) was used to find latitude and longitude of crossing intersections. These geographical coordinates will be used to search FourSquare API location data.
-The Python code used to 
+
+**The Python code used to retrieve geographical coordinates for crossing intersections**
 
 ```python 
 def get_cross_intersec_localization(pets):
