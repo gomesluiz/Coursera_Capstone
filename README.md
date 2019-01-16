@@ -158,7 +158,7 @@ The generated clusters from our results show that most avenues around crossing i
 
 I would like to thank the Coursera and the IBM companies for the excellent course and my peers for the valuable evaluations of the my activities.
 
-The best regards,
+Best regards,
 
 Luiz Alberto Ferreira Gomes
 
